@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script> <!-- 引入vue的cdn -->
+    
+</head>
+<body>
+    <div id="root">
+        <div>{{message}}</div>
+    </div>
+    <script>
+        // 生命週期函數:在某一時刻會自動執行的函數
+        let app = Vue.createApp({
+            data(){
+                return{
+                    message:'hello world'
+                }
+            },
+            // 在實例生成之前會自動執行的函數
+            beforeCreate(){
+                console.log('beforeCreate')
+            },
+            // 在實例生成之後會自動執行的函數
+            created(){
+                console.log("created") 
+            },
+            // 在組件內容被渲染到頁面之前自動執行的函數
+            beforeMount(){
+                console.log(document.getElementById('root').innerHTML,'beforeMount')
+                 
+            },
+            // 在組件內容被渲染到頁面之後自動執行的函數
+            mounted(){
+                console.log(document.getElementById('root').innerHTML,'mounted')
+            },
+            // 當數據發生變化時會立即自動執行的函數
+            beforeUpdate(){
+                console.log(document.getElementById('root').innerHTML,'beforeUpdate')
+            },
+            // 當數據發生變化 頁面重新渲染後 會自動執行的函數
+            Update(){
+                console.log(document.getElementById('root').innerHTML,'Update')
+            },
+            //當 Vue 應用失效時 自動執行的函數
+            beforeUnmount(){
+                console.log(document.getElementById('root').innerHTML,'beforeUnmount')
+            },
+            //當 Vue 應用失效時 且 dom 完全銷毀之後 自動執行的函數
+            unmounted(){
+                console.log(document.getElementById('root').innerHTML,'unmounted')
+            },
+        });
+    
+        let vm = app.mount('#root');//.mount('#root') 在div名稱=root上使用Vue   
+        // vm.$data.message = "abc";//abc 可以用vm操作app裡面的message 使他改變變化
+    </script>
+</body>
+</html>
